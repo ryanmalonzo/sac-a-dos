@@ -12,8 +12,8 @@ public enum Methode {
 
     // TODO keep wrapper here, move definition in separate file
     public static void Gloutonne(SacADos sac) {
-        Objet[] objets = sac.getObjets();
-        quicksort(objets, 0, objets.length - 1);
+        List<Objet> objets = sac.getObjets();
+        quicksort(objets, 0, objets.size() - 1);
 
         List<Objet> contenu = new ArrayList<>();
         double valeur = 0.0, poids = 0.0;
@@ -36,8 +36,8 @@ public enum Methode {
 
     }
 
-    private static void quicksort(Objet[] t, int first, int last) {
-        resolution.algorithmes.Quicksort.quicksort(t, first, last);
+    private static void quicksort(List<Objet> l, int first, int last) {
+        resolution.algorithmes.Quicksort.quicksort(l, first, last);
     }
 
     private static void afficher(List<Objet> contenu, double valeur, double poids) {

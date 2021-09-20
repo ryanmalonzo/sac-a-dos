@@ -5,12 +5,16 @@ import resolution.Methode;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SacADos {
-    private final String chemin;
-    private final double poidsMax;
-    private Objet[] objets;
+    private String chemin;
+    private double poidsMax;
+    private List<Objet> objets;
+
+    public SacADos() {}
 
     public SacADos(String chemin, double poidsMax) {
         this.chemin = chemin;
@@ -32,49 +36,25 @@ public class SacADos {
         try {
             Scanner sc = new Scanner(new File(chemin));
 
-            int nbObjets = nbLignes(chemin);
-
+            objets = new ArrayList<>();
             // Stocke les objets
-            Objet[] obj = new Objet[nbObjets];
-            int i = 0;
             while (sc.hasNextLine()) {
                 String[] s = sc.nextLine().split(" ; ");
-                obj[i] = new Objet(s[0],
-                        Double.parseDouble(s[1]), Double.parseDouble(s[2]));
-                ++i;
+                objets.add(new Objet(s[0], Double.parseDouble(s[1]), Double.parseDouble(s[2])));
             }
 
             sc.close();
-            objets = obj;
         }
         catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private int nbLignes(String chemin) {
-        int nbLignes = 0;
-
-        try {
-            Scanner sc = new Scanner(new File(chemin));
-            while (sc.hasNextLine()) {
-                sc.nextLine();
-                ++nbLignes;
-            }
-            sc.close();
-
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return nbLignes;
-    }
-
     public double getPoidsMax() {
         return poidsMax;
     }
 
-    public Objet[] getObjets() {
+    public List<Objet> getObjets() {
         return objets;
     }
 }
