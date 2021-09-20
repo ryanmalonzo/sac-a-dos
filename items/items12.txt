@@ -1,0 +1,8 @@
+Objet A ; 2.0 ; 5.0
+Objet B ; 3.0 ; 8.0
+Objet C ; 5.0 ; 14.0
+Objet D ; 2.0 ; 6.0
+Objet E ; 4.0 ; 13.0
+Objet F ; 6.0 ; 17.0
+Objet G ; 3.0 ; 10.0
+Objet H ; 1.0 ; 4.0

@@ -1,0 +1,5 @@
+Objet A ; 9.0 ; 10.0
+Objet B ; 12.0 ; 7.0
+Objet C ; 2.0 ; 1.0
+Objet D ; 7.0 ; 3.0
+Objet E ; 5.0 ; 2.0
