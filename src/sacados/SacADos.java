@@ -1,7 +1,6 @@
 package sacados;
 
 import objet.Objet;
-import resolution.Methode;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,15 +20,11 @@ public class SacADos {
         this.poidsMax = poidsMax;
     }
 
-    public void resoudre(Methode methode) {
+    public void resoudre(IMethode methode) {
         if (objets == null)
             parse(chemin);
 
-        switch (methode) {
-            case GLOUTONNE -> Methode.Gloutonne(this);
-            case DYNAMIQUE -> Methode.Dynamique(this);
-            case PSE -> Methode.PSE(this);
-        }
+        methode.resoudre(this);
     }
 
     private void parse(String chemin) {

@@ -1,6 +1,7 @@
 package main;
 
-import resolution.Methode;
+import resolution.methodes.*;
+import sacados.IMethode;
 import sacados.SacADos;
 
 public class Main {
@@ -8,11 +9,11 @@ public class Main {
         double poidsMax = Double.parseDouble(args[1]);
         SacADos sac = new SacADos(args[0], poidsMax);
 
-        Methode m;
+        IMethode m;
         switch (args[2]) {
-            case "gloutonne" -> m = Methode.GLOUTONNE;
-            case "dynamique" -> m = Methode.DYNAMIQUE;
-            case "pse" -> m = Methode.PSE;
+            case "gloutonne" -> m = new Gloutonne();
+            case "dynamique" -> m = new Dynamique();
+            case "pse" -> m = new PSE();
             default -> throw new IllegalStateException("Unexpected value: " + args[2]);
         }
 
