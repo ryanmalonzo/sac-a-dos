@@ -17,6 +17,5 @@ public class Main {
         }
 
         sac.resoudre(m);
-
     }
 }
