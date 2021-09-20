@@ -2,8 +2,6 @@ package resolution.algorithmes;
 
 import objet.Objet;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
