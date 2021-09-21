@@ -21,6 +21,6 @@ public class Gloutonne extends Methode {
             }
         }
 
-        afficher(contenu, valeur, poids);
+        afficher(contenu, poids, valeur);
     }
 }
