@@ -4,8 +4,6 @@ import resolution.methodes.*;
 import sacados.IMethode;
 import sacados.SacADos;
 
-import java.io.FileNotFoundException;
-
 public class Main {
     public static void main(String[] args) {
         double poidsMax = Double.parseDouble(args[1]);
