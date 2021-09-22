@@ -6,7 +6,15 @@ import sacados.IMethode;
 import java.text.DecimalFormat;
 import java.util.List;
 
+/**
+ * Classe abstraite de méthode contenant les fonctions communes à chaque implémentation
+ * pour le tri et l'affichage du résultat d'une résolution
+ */
 public abstract class Methode implements IMethode {
+    /**
+     * Trie une liste d'objets avec l'algorithme de tri rapide
+     * @param l La liste d'objets
+     */
     protected static void quicksort(List<Objet> l) {
         resolution.algorithmes.Quicksort.quicksort(l, 0, l.size() - 1);
     }

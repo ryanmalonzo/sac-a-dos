@@ -23,6 +23,11 @@ public class Objet implements Comparable<Objet> {
         return valeur;
     }
 
+    /**
+     * Permet la comparaison de deux objets selon le ratio valeur/poids requis pour la méthode gloutonne
+     * @param o L'objet comparé à cette instance d'objet
+     * @return L'entier résultat de la comparaison
+     */
     @Override
     public int compareTo(Objet o) {
         double difference = (valeur / poids) - (o.valeur / o.poids);
