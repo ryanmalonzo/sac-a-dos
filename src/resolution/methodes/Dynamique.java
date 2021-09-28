@@ -8,8 +8,9 @@ import java.util.List;
 
 public class Dynamique extends Methode {
     public void resoudre(SacADos sac) {
-        List<Objet> objets = sac.getObjets();
+        int coefficient = coefficient(sac);
 
+        List<Objet> objets = sac.getObjets();
         int nbObjets = objets.size();
         int maxPoids = (int) sac.getPoidsMax();
 
@@ -64,5 +65,24 @@ public class Dynamique extends Methode {
             System.out.println();
         }
         System.out.println();*/
+    }
+
+    /**
+     * TODO documenter
+     * @param sac
+     * @return
+     */
+    private int coefficient(SacADos sac) {
+        List<Objet> objets = sac.getObjets();
+
+        // Récupérer le plus grand nombre de zéros après la virgule parmi les poids
+        // des objets et le poids maximum du sac
+        int nbDecimalesMax = 0;
+        for (Objet o : objets) {
+            String s = Double.toString(o.getPoids());
+            String[] s2 = s.split("\\.");
+            if (s2[1].length() > nbDecimalesMax)
+                nbDecimalesMax = s2[1].length();
+        }
     }
 }
