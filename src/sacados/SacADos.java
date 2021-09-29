@@ -53,4 +53,8 @@ public class SacADos {
     public List<Objet> getObjets() {
         return objets;
     }
+
+    public void setPoidsMax(double poidsMax) {
+        this.poidsMax = poidsMax;
+    }
 }

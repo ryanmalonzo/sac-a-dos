@@ -9,6 +9,7 @@ import java.util.List;
 public class Dynamique extends Methode {
     public void resoudre(SacADos sac) {
         int coefficient = coefficient(sac);
+        normaliser(sac, coefficient); // TODO copie des objets et du poids max ?
 
         List<Objet> objets = sac.getObjets();
         int nbObjets = objets.size();
@@ -40,7 +41,7 @@ public class Dynamique extends Methode {
         while (m[nbObjets - 1][j] == m[nbObjets - 1][j - 1])
             --j;
 
-        int poids = j; // pour affichage
+        double poids = j; // pour affichage
 
         // Récupérer les objets à mettre dans le sac
         List<Objet> contenu = new ArrayList<>();
@@ -55,6 +56,11 @@ public class Dynamique extends Methode {
             --i;
         }
 
+        // Réinitialisation des poids pour affichage
+        for (Objet o : contenu)
+            o.setPoids(o.getPoids() / coefficient);
+        poids = poids / coefficient;
+
         // Affichage des obtenus contenus dans le sac pour solution optimale
         afficher(contenu, poids, m[nbObjets - 1][maxPoids]);
 
@@ -68,21 +74,41 @@ public class Dynamique extends Methode {
     }
 
     /**
-     * TODO documenter
-     * @param sac
-     * @return
+     * Détermine un coefficient multiplicateur à appliquer aux valeurs de poids
+     * pour pouvoir utiliser l'algorithme avec des valeurs décimales
+     * @param sac Le sac à dos à résoudre
+     * @return La valeur du coefficient (puissance de 10)
      */
     private int coefficient(SacADos sac) {
-        List<Objet> objets = sac.getObjets();
-
         // Récupérer le plus grand nombre de zéros après la virgule parmi les poids
         // des objets et le poids maximum du sac
         int nbDecimalesMax = 0;
-        for (Objet o : objets) {
-            String s = Double.toString(o.getPoids());
-            String[] s2 = s.split("\\.");
-            if (s2[1].length() > nbDecimalesMax)
-                nbDecimalesMax = s2[1].length();
+
+        for (Objet o : sac.getObjets()) {
+            // On récupère dans une chaîne les décimales du nombre
+            String s = Double.toString(o.getPoids()).split("\\.")[1];
+            if (s.length() > nbDecimalesMax)
+                nbDecimalesMax = s.length();
         }
+
+        // Poids maximum du sac
+        String s2 = Double.toString(sac.getPoidsMax()).split("\\.")[1];
+        if (s2.length() > nbDecimalesMax)
+            nbDecimalesMax = s2.length();
+
+        return (int) Math.pow(10, nbDecimalesMax);
+    }
+
+    /**
+     * Transforme tous les poids d'un sac à dos en valeurs entières en les multipliant
+     * par un coefficient
+     * @param sac Le sac à dos à normaliser
+     * @param coefficient Le coefficient à appliquer
+     */
+    private void normaliser(SacADos sac, int coefficient) {
+        for (Objet o : sac.getObjets())
+            o.setPoids(o.getPoids() * coefficient);
+
+        sac.setPoidsMax(sac.getPoidsMax() * coefficient);
     }
 }

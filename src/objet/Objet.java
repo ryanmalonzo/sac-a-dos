@@ -3,7 +3,7 @@ package objet;
 public class Objet implements Comparable<Objet> {
     private final String nom;
     private final double valeur;
-    private final double poids;
+    private double poids;
 
     public Objet(String nom, double poids, double valeur) {
         this.nom = nom;
@@ -21,6 +21,10 @@ public class Objet implements Comparable<Objet> {
 
     public double getValeur() {
         return valeur;
+    }
+
+    public void setPoids(double poids) {
+        this.poids = poids;
     }
 
     /**
