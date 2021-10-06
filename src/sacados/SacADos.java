@@ -9,11 +9,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SacADos {
-    private String chemin;
-    private double poidsMax;
+    private final String chemin;
+    private Double poidsMax;
     private List<Objet> objets;
 
-    public SacADos() {}
+    public SacADos() { // TODO demander l'intérêt
+        chemin = null;
+        poidsMax = null;
+        objets = null;
+    }
 
     public SacADos(String chemin, double poidsMax) {
         this.chemin = chemin;
