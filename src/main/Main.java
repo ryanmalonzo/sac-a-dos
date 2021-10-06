@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         double poidsMax = Double.parseDouble(args[1]);
         if (poidsMax <= 0.0)
-            throw new IllegalArgumentException("Poids max inférieur ou égal à 0");
+            throw new IllegalArgumentException("Poids max inférieur ou égal à 0.0");
 
         SacADos sac = new SacADos(args[0], poidsMax);
 
