@@ -26,6 +26,7 @@ public abstract class Methode implements IMethode {
      * @param poids Le poids total du sac à dos
      */
     protected static void afficher(List<Objet> contenu, double poids, double valeur) {
+        // Formatage à deux chiffres après la virgule
         DecimalFormat df = new DecimalFormat();
         df.setMinimumFractionDigits(2);
         df.setMaximumFractionDigits(2);
