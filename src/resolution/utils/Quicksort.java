@@ -1,4 +1,4 @@
-package resolution.algorithmes;
+package resolution.utils;
 
 import objet.Objet;
 

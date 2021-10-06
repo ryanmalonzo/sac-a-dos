@@ -16,7 +16,7 @@ public abstract class Methode implements IMethode {
      * @param l La liste d'objets
      */
     protected static void quicksort(List<Objet> l) {
-        resolution.algorithmes.Quicksort.quicksort(l, 0, l.size() - 1);
+        resolution.utils.Quicksort.quicksort(l, 0, l.size() - 1);
     }
 
     /**
