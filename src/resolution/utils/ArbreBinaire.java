@@ -57,6 +57,7 @@ public class ArbreBinaire {
 
             initialiserFils();
         }
+
         else {
             gauche.ajouter(i, false);
             this.droite.ajouter(i, true);
