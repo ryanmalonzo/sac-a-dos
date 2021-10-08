@@ -14,14 +14,11 @@ public class Main {
 
         IMethode m;
         switch (args[2]) {
-            case "gloutonne":
-                m = new Gloutonne();
+            case "gloutonne": m = new Gloutonne();
                 break;
-            case "dynamique":
-                m = new Dynamique();
+            case "dynamique": m = new Dynamique();
                 break;
-            case "pse":
-                m = new PSE();
+            case "pse": m = new PSE();
                 break;
             default: throw new IllegalArgumentException("Nom de méthode inconnue : " + args[2]);
         }

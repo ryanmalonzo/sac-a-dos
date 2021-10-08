@@ -3,6 +3,7 @@ package resolution.utils;
 import sacados.SacADos;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ArbreBinaire {
@@ -64,15 +65,32 @@ public class ArbreBinaire {
         }
     }
 
+    public List<List<Integer>> feuilles() {
+        List<List<Integer>> feuilles = new ArrayList<>();
+        trouverFeuilles(feuilles);
+        return feuilles;
+    }
+
+    private void trouverFeuilles(List<List<Integer>> feuilles) {
+        if (gauche.objets != null || droite.objets != null) {
+            if (gauche.objets != null)
+                gauche.trouverFeuilles(feuilles);
+            if (droite.objets != null)
+                droite.trouverFeuilles(feuilles);
+        } else {
+            feuilles.add(objets);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        if (gauche.objets == null) // ou droite.objets
-            sb.append(objets).append(System.lineSeparator());
-        else {
-            sb.append(gauche);
-            sb.append(droite);
-        }
+        List<List<Integer>> feuilles = feuilles();
+        Collections.reverse(feuilles); // affichage inversé
+
+        for (List<Integer> feuille : feuilles)
+            sb.append(feuille).append(System.lineSeparator());
+
         return sb.toString();
     }
 }
