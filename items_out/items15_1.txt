@@ -1,0 +1,5 @@
+Contenu du sac :
+Objet E, poids  5,00, valeur  2,00
+Objet A, poids  9,00, valeur 10,00
+
+Poids total : 14,00, valeur totale : 12,00
