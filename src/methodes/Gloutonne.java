@@ -1,4 +1,4 @@
-package resolution.methodes;
+package methodes;
 
 import objet.Objet;
 import sacados.SacADos;

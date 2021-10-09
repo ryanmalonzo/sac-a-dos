@@ -1,4 +1,4 @@
-package resolution.methodes;
+package methodes;
 
 import objet.Objet;
 import sacados.IMethode;
@@ -16,7 +16,7 @@ public abstract class Methode implements IMethode {
      * @param l La liste d'objets
      */
     protected static void quicksort(List<Objet> l) {
-        resolution.algorithmes.Quicksort.quicksort(l, 0, l.size() - 1);
+        utilitaires.Quicksort.quicksort(l, 0, l.size() - 1);
     }
 
     /**
@@ -26,6 +26,7 @@ public abstract class Methode implements IMethode {
      * @param poids Le poids total du sac à dos
      */
     protected static void afficher(List<Objet> contenu, double poids, double valeur) {
+        // Formatage à deux chiffres après la virgule
         DecimalFormat df = new DecimalFormat();
         df.setMinimumFractionDigits(2);
         df.setMaximumFractionDigits(2);

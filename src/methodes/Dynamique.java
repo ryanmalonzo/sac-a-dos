@@ -1,4 +1,4 @@
-package resolution.methodes;
+package methodes;
 
 import objet.Objet;
 import sacados.SacADos;
@@ -9,7 +9,7 @@ import java.util.List;
 public class Dynamique extends Methode {
     public void resoudre(SacADos sac) {
         int coefficient = coefficient(sac);
-        normaliser(sac, coefficient); // TODO copie des objets et du poids max ?
+        normaliser(sac, coefficient);
 
         List<Objet> objets = sac.getObjets();
         int nbObjets = objets.size();

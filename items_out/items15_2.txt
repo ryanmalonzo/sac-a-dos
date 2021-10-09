@@ -1,0 +1,11 @@
+Contenu du sac :
+Chips, poids  0,20, valeur  2,00
+Briquet, poids  0,20, valeur  3,00
+Tente 2 secondes, poids  3,00, valeur 100,00
+Snickers, poids  0,10, valeur  3,00
+Couteau suisse, poids  0,20, valeur 50,00
+Camping gaz, poids  3,00, valeur 40,00
+Sac de couchage, poids  1,00, valeur 20,00
+Lampe, poids  2,00, valeur 30,00
+
+Poids total : 9,70, valeur totale : 248,00
