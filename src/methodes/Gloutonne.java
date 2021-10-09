@@ -1,19 +1,17 @@
 package methodes;
 
-import objet.Objet;
+import objets.Objet;
+import objets.Objets;
 import sacados.SacADos;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Gloutonne extends Methode {
     public void resoudre(SacADos sac) {
-        List<Objet> objets = sac.getObjets();
+        Objets objets = sac.getObjets();
         quicksort(objets);
 
-        List<Objet> contenu = new ArrayList<>();
+        Objets contenu = new Objets();
         double valeur = 0.0, poids = 0.0;
-        for (Objet objet : objets) {
+        for (Objet objet : objets.get()) {
             if (poids + objet.getPoids() <= sac.getPoidsMax()) {
                 contenu.add(objet);
                 valeur += objet.getValeur();

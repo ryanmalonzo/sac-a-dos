@@ -1,23 +1,16 @@
 package sacados;
 
-import objet.Objet;
+import objets.Objet;
+import objets.Objets;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class SacADos {
     private final String chemin;
     private Double poidsMax;
-    private List<Objet> objets;
-
-    public SacADos() { // TODO demander l'intérêt
-        chemin = null;
-        poidsMax = null;
-        objets = null;
-    }
+    private Objets objets;
 
     public SacADos(String chemin, double poidsMax) {
         this.chemin = chemin;
@@ -35,7 +28,7 @@ public class SacADos {
         try {
             Scanner sc = new Scanner(new File(chemin));
 
-            objets = new ArrayList<>();
+            objets = new Objets();
             // Stocke les objets
             while (sc.hasNextLine()) {
                 String[] s = sc.nextLine().split(" ; ");
@@ -54,7 +47,7 @@ public class SacADos {
         return poidsMax;
     }
 
-    public List<Objet> getObjets() {
+    public Objets getObjets() {
         return objets;
     }
 
