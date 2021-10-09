@@ -15,7 +15,7 @@ public class BTreePSE {
     private List<Integer> objets;
 
     private static SacADos sac;
-    private static double inf = 0;
+    private static double inf = 0.0;
 
 
     public BTreePSE(SacADos sac) {
@@ -45,25 +45,38 @@ public class BTreePSE {
      */
     public void construire() {
         for (int i = 1; i <= sac.getObjets().size(); ++i) {
-            gauche.ajouter(i, false);
-            droite.ajouter(i, true);
+            if (gauche != null)
+                gauche.ajouter(i, false);
+            if (droite != null)
+                droite.ajouter(i, true);
         }
     }
 
     private void ajouter(Integer i, boolean droite) {
         if (objets == null) {
             objets = new ArrayList<>(parent.objets);
+
             if (droite) {
                 objets.add(i);
                 if (!realisable(intToObj(objets)))
                     parent.droite = null;
             }
 
+            // Borne supérieure
+            if (sup() < inf) {
+                if (droite)
+                    parent.droite = null;
+                else
+                    parent.gauche = null;
+                return;
+            }
+
             initialiserFils();
         }
 
         else {
-            gauche.ajouter(i, false);
+            if (this.gauche != null)
+                gauche.ajouter(i, false);
             if (this.droite != null)
                 this.droite.ajouter(i, true);
         }
@@ -132,7 +145,7 @@ public class BTreePSE {
             /*
             Deux cas de figure :
             - la valeur du sac est plus grande que la solution
-            - la valeur du sac est la même que la solution mais son poids est plus faible
+            - la valeur du sac est la même que la solution mais son poids est plus faible (optimal)
             */
             if (valeur > valeurSolution || (valeur == valeurSolution && poids < poidsSolution)) {
                 poidsSolution = poids;
@@ -141,6 +154,28 @@ public class BTreePSE {
             }
         }
         return solution;
+    }
+
+    private int profondeur() {
+        if (parent == this)
+            return 1;
+        return 1 + parent.profondeur();
+    }
+
+    private double sup() {
+        int objetSuivant = profondeur();
+        double sup = 0.0;
+        List<Objet> ob = intToObj(objets);
+        for (Objet o : ob) {
+            sup += o.getValeur();
+        }
+
+        while (objetSuivant - 1 < sac.getObjets().size()) {
+            sup += sac.getObjets().get(objetSuivant - 1).getValeur();
+            ++objetSuivant;
+        }
+
+        return sup;
     }
 
     @Override
