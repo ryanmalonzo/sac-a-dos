@@ -1,6 +1,6 @@
 package main;
 
-import resolution.methodes.*;
+import methodes.*;
 import sacados.IMethode;
 import sacados.SacADos;
 

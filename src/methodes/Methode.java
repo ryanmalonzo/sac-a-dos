@@ -1,4 +1,4 @@
-package resolution.methodes;
+package methodes;
 
 import objet.Objet;
 import sacados.IMethode;
@@ -16,7 +16,7 @@ public abstract class Methode implements IMethode {
      * @param l La liste d'objets
      */
     protected static void quicksort(List<Objet> l) {
-        resolution.utils.Quicksort.quicksort(l, 0, l.size() - 1);
+        utilitaires.Quicksort.quicksort(l, 0, l.size() - 1);
     }
 
     /**

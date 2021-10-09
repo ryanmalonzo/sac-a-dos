@@ -1,14 +1,13 @@
-package resolution.methodes;
+package methodes;
 
-import resolution.utils.ArbreBinaire;
+import utilitaires.BTreePSE;
 import sacados.SacADos;
-
-import java.util.List;
 
 public class PSE extends Methode {
     public void resoudre(SacADos sac) {
-        ArbreBinaire ab = new ArbreBinaire(sac);
+        BTreePSE ab = new BTreePSE(sac);
         ab.construire();
         System.out.println(ab);
+        System.out.println(BTreePSE.getInf());
     }
 }
