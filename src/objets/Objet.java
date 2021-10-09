@@ -1,4 +1,4 @@
-package objet;
+package objets;
 
 public class Objet implements Comparable<Objet> {
     private final String nom;

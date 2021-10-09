@@ -23,6 +23,11 @@ public class Main {
             default: throw new IllegalArgumentException("Nom de méthode inconnue : " + args[2]);
         }
 
+        long debutRes = System.currentTimeMillis();
         sac.resoudre(m);
+        long finRes = System.currentTimeMillis();
+
+        double tempsRes = finRes - debutRes;
+        System.out.println("Temps d'exécution : " + tempsRes + " ms");
     }
 }

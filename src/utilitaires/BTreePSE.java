@@ -1,6 +1,7 @@
 package utilitaires;
 
-import objet.Objet;
+import objets.Objet;
+import objets.Objets;
 import sacados.SacADos;
 
 import java.util.ArrayList;
@@ -55,14 +56,11 @@ public class BTreePSE {
     private void ajouter(Integer i, boolean droite) {
         if (objets == null) {
             objets = new ArrayList<>(parent.objets);
-
             if (droite) {
                 objets.add(i);
                 if (!realisable(intToObj(objets)))
                     parent.droite = null;
             }
-
-            // Borne supérieure
             if (sup() < inf) {
                 if (droite)
                     parent.droite = null;
@@ -70,11 +68,8 @@ public class BTreePSE {
                     parent.gauche = null;
                 return;
             }
-
             initialiserFils();
-        }
-
-        else {
+        } else {
             if (this.gauche != null)
                 gauche.ajouter(i, false);
             if (this.droite != null)
@@ -103,45 +98,39 @@ public class BTreePSE {
         return bt != null && bt.objets != null;
     }
 
-    private boolean realisable(List<Objet> objets) {
-        double poids = 0.0, valeur = 0.0;
-        for (Objet o : objets) {
-            poids += o.getPoids();
-            valeur += o.getValeur();
-        }
+    private boolean realisable(Objets objets) {
+        double poids = objets.poids();
+        double valeur = objets.valeur();
 
         if (poids > sac.getPoidsMax())
             return false;
 
-        // Mise à jour de la borne inférieure ?
+        // Mise à jour de la borne inférieure
         if (poids <= sac.getPoidsMax() && valeur > inf)
             inf = valeur;
 
         return true;
     }
 
-    private List<Objet> intToObj(List<Integer> entiers) {
-        List<Objet> o = new ArrayList<>();
-        List<Objet> s = sac.getObjets();
+    private Objets intToObj(List<Integer> entiers) {
+        Objets o = new Objets();
+        Objets s = sac.getObjets();
         for (Integer i : entiers)
             o.add(s.get(i - 1)); // -1 car +1 pour l'affichage
         return o;
     }
 
-    public List<Objet> solution() {
-        List<List<Objet>> listeObjets = new ArrayList<>();
+    public Objets solution() {
+        List<Objets> listeObjets = new ArrayList<>();
         for (List<Integer> feuille : feuilles())
             listeObjets.add(intToObj(feuille));
 
-        List<Objet> solution = new ArrayList<>();
+        Objets solution = new Objets();
         double poidsSolution = 0.0, valeurSolution = 0.0;
 
-        for (List<Objet> objets : listeObjets) {
-            double poids = 0.0, valeur = 0.0;
-            for (Objet o : objets) {
-                poids += o.getPoids();
-                valeur += o.getValeur();
-            }
+        for (Objets objets : listeObjets) {
+            double poids = objets.poids();
+            double valeur = objets.valeur();
             /*
             Deux cas de figure :
             - la valeur du sac est plus grande que la solution
@@ -165,8 +154,8 @@ public class BTreePSE {
     private double sup() {
         int objetSuivant = profondeur();
         double sup = 0.0;
-        List<Objet> ob = intToObj(objets);
-        for (Objet o : ob) {
+        Objets ob = intToObj(objets);
+        for (Objet o : ob.get()) {
             sup += o.getValeur();
         }
 

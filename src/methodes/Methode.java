@@ -1,10 +1,10 @@
 package methodes;
 
-import objet.Objet;
+import objets.Objet;
+import objets.Objets;
 import sacados.IMethode;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
 /**
  * Classe abstraite de méthode contenant les fonctions communes à chaque implémentation
@@ -15,7 +15,7 @@ public abstract class Methode implements IMethode {
      * Trie une liste d'objets avec l'algorithme de tri rapide
      * @param l La liste d'objets
      */
-    protected static void quicksort(List<Objet> l) {
+    protected static void quicksort(Objets l) {
         utilitaires.Quicksort.quicksort(l, 0, l.size() - 1);
     }
 
@@ -25,14 +25,14 @@ public abstract class Methode implements IMethode {
      * @param valeur La valeur totale du sac à dos
      * @param poids Le poids total du sac à dos
      */
-    protected static void afficher(List<Objet> contenu, double poids, double valeur) {
+    protected static void afficher(Objets contenu, double poids, double valeur) {
         // Formatage à deux chiffres après la virgule
         DecimalFormat df = new DecimalFormat();
         df.setMinimumFractionDigits(2);
         df.setMaximumFractionDigits(2);
 
         System.out.println("Contenu du sac :");
-        for (Objet objet : contenu)
+        for (Objet objet : contenu.get())
             System.out.printf("%s, poids %5s, valeur %5s\n", objet.getNom(),
                     df.format(objet.getPoids()), df.format(objet.getValeur()));
 
