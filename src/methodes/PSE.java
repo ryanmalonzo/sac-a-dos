@@ -20,6 +20,5 @@ public class PSE extends Methode {
 
         afficher(contenu, poids, valeur);
         //System.out.println(bt);
-        //System.out.println(BTreePSE.getInf());
     }
 }

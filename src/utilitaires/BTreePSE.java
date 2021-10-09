@@ -97,46 +97,27 @@ public class BTreePSE {
             valeur += o.getValeur();
         }
 
-        // Poids des objets trop grands
         if (poids > sac.getPoidsMax())
             return false;
 
-        // Mise à jour de la borne inférieure
+        // Mise à jour de la borne inférieure ?
         if (poids <= sac.getPoidsMax() && valeur > inf)
             inf = valeur;
 
         return true;
     }
 
-    // TODO remove
-    public static double getInf() {
-        return inf;
-    }
-
     private List<Objet> intToObj(List<Integer> entiers) {
         List<Objet> o = new ArrayList<>();
         List<Objet> s = sac.getObjets();
         for (Integer i : entiers)
-            o.add(s.get(i - 1));
+            o.add(s.get(i - 1)); // -1 car +1 pour l'affichage
         return o;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        List<List<Integer>> feuilles = feuilles();
-        Collections.reverse(feuilles); // affichage inversé
-
-        for (List<Integer> feuille : feuilles)
-            sb.append(feuille).append(System.lineSeparator());
-
-        return sb.toString();
-    }
-
     public List<Objet> solution() {
-        List<List<Integer>> feuilles = feuilles();
         List<List<Objet>> listeObjets = new ArrayList<>();
-        for (List<Integer> feuille : feuilles)
+        for (List<Integer> feuille : feuilles())
             listeObjets.add(intToObj(feuille));
 
         List<Objet> solution = new ArrayList<>();
@@ -148,7 +129,6 @@ public class BTreePSE {
                 poids += o.getPoids();
                 valeur += o.getValeur();
             }
-
             /*
             Deux cas de figure :
             - la valeur du sac est plus grande que la solution
@@ -161,5 +141,17 @@ public class BTreePSE {
             }
         }
         return solution;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        List<List<Integer>> feuilles = feuilles();
+        Collections.reverse(feuilles); // affichage inversé
+
+        for (List<Integer> feuille : feuilles)
+            sb.append(feuille).append(System.lineSeparator());
+
+        return sb.toString();
     }
 }
