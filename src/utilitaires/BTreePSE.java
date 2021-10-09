@@ -15,8 +15,6 @@ public class BTreePSE {
     private List<Integer> objets;
 
     private static SacADos sac;
-
-    private double sup;
     private static double inf = 0;
 
 
@@ -57,8 +55,8 @@ public class BTreePSE {
             objets = new ArrayList<>(parent.objets);
             if (droite) {
                 objets.add(i);
-                List<Objet> o = intToObj(objets);
-                if (!realisable(o)) parent.droite = null;
+                if (!realisable(intToObj(objets)))
+                    parent.droite = null;
             }
 
             initialiserFils();
@@ -88,8 +86,8 @@ public class BTreePSE {
         }
     }
 
-    private boolean existe(BTreePSE ab) {
-        return ab != null && ab.objets != null;
+    private boolean existe(BTreePSE bt) {
+        return bt != null && bt.objets != null;
     }
 
     private boolean realisable(List<Objet> objets) {
@@ -133,5 +131,35 @@ public class BTreePSE {
             sb.append(feuille).append(System.lineSeparator());
 
         return sb.toString();
+    }
+
+    public List<Objet> solution() {
+        List<List<Integer>> feuilles = feuilles();
+        List<List<Objet>> listeObjets = new ArrayList<>();
+        for (List<Integer> feuille : feuilles)
+            listeObjets.add(intToObj(feuille));
+
+        List<Objet> solution = new ArrayList<>();
+        double poidsSolution = 0.0, valeurSolution = 0.0;
+
+        for (List<Objet> objets : listeObjets) {
+            double poids = 0.0, valeur = 0.0;
+            for (Objet o : objets) {
+                poids += o.getPoids();
+                valeur += o.getValeur();
+            }
+
+            /*
+            Deux cas de figure :
+            - la valeur du sac est plus grande que la solution
+            - la valeur du sac est la même que la solution mais son poids est plus faible
+            */
+            if (valeur > valeurSolution || (valeur == valeurSolution && poids < poidsSolution)) {
+                poidsSolution = poids;
+                valeurSolution = valeur;
+                solution = objets;
+            }
+        }
+        return solution;
     }
 }
