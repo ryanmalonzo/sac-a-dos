@@ -1,8 +1,0 @@
-Contenu du sac :
-Objet H, poids  1,00, valeur  4,00
-Objet G, poids  3,00, valeur 10,00
-Objet E, poids  4,00, valeur 13,00
-Objet D, poids  2,00, valeur  6,00
-Objet A, poids  2,00, valeur  5,00
-
-Poids total : 12,00, valeur totale : 38,00
