@@ -1,4 +1,4 @@
-![sac-a-dos](./docs/logo.png)
+![sac-a-dos](./docs/logo.svg)
 
 # Problème du sac à dos
 
