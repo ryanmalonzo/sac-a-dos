@@ -1,17 +1,17 @@
 package methodes;
 
-import objet.Objet;
+import objets.Objet;
+import objets.Objets;
 import sacados.SacADos;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Dynamique extends Methode {
     public void resoudre(SacADos sac) {
+        // Normalise les valeurs de poids des objets et du sac pour n'opérer
+        // qu'avec des valeurs entières (accès aux cases du tableau)
         int coefficient = coefficient(sac);
         normaliser(sac, coefficient);
 
-        List<Objet> objets = sac.getObjets();
+        Objets objets = sac.getObjets();
         int nbObjets = objets.size();
         int maxPoids = (int) sac.getPoidsMax();
 
@@ -44,7 +44,7 @@ public class Dynamique extends Methode {
         double poids = j; // pour affichage
 
         // Récupérer les objets à mettre dans le sac
-        List<Objet> contenu = new ArrayList<>();
+        Objets contenu = new Objets();
         int i = nbObjets - 1;
         while (j > 0) {
             while (i > 0 && m[i][j] == m[i - 1][j])
@@ -57,7 +57,7 @@ public class Dynamique extends Methode {
         }
 
         // Réinitialisation des poids pour affichage
-        for (Objet o : contenu)
+        for (Objet o : contenu.get())
             o.setPoids(o.getPoids() / coefficient);
         poids = poids / coefficient;
 
@@ -76,6 +76,7 @@ public class Dynamique extends Methode {
     /**
      * Détermine un coefficient multiplicateur à appliquer aux valeurs de poids
      * pour pouvoir utiliser l'algorithme avec des valeurs décimales
+     *
      * @param sac Le sac à dos à résoudre
      * @return La valeur du coefficient (puissance de 10)
      */
@@ -84,7 +85,7 @@ public class Dynamique extends Methode {
         // des objets et le poids maximum du sac
         int nbDecimalesMax = 0;
 
-        for (Objet o : sac.getObjets()) {
+        for (Objet o : sac.getObjets().get()) {
             // On récupère dans une chaîne les décimales du nombre
             String s = Double.toString(o.getPoids()).split("\\.")[1];
             if (s.length() > nbDecimalesMax)
@@ -102,11 +103,12 @@ public class Dynamique extends Methode {
     /**
      * Transforme tous les poids d'un sac à dos en valeurs entières en les multipliant
      * par un coefficient
-     * @param sac Le sac à dos à normaliser
+     *
+     * @param sac         Le sac à dos à normaliser
      * @param coefficient Le coefficient à appliquer
      */
     private void normaliser(SacADos sac, int coefficient) {
-        for (Objet o : sac.getObjets())
+        for (Objet o : sac.getObjets().get())
             o.setPoids(o.getPoids() * coefficient);
 
         sac.setPoidsMax(sac.getPoidsMax() * coefficient);

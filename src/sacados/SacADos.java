@@ -1,29 +1,33 @@
 package sacados;
 
-import objet.Objet;
+import objets.Objet;
+import objets.Objets;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class SacADos {
     private final String chemin;
     private Double poidsMax;
-    private List<Objet> objets;
+    private Objets objets;
 
-    public SacADos() { // TODO demander l'intérêt
-        chemin = null;
-        poidsMax = null;
-        objets = null;
-    }
-
+    /**
+     * Initialise un sac à dos
+     *
+     * @param chemin   Le chemin du fichier contenant ses objets formatés
+     * @param poidsMax Le poids maximal supporté par le sac
+     */
     public SacADos(String chemin, double poidsMax) {
         this.chemin = chemin;
         this.poidsMax = poidsMax;
     }
 
+    /**
+     * Résout le sac à dos selon la méthode passée en paramètre
+     *
+     * @param methode La méthode à utiliser pour la résolution
+     */
     public void resoudre(IMethode methode) {
         if (objets == null)
             parse(chemin);
@@ -35,7 +39,7 @@ public class SacADos {
         try {
             Scanner sc = new Scanner(new File(chemin));
 
-            objets = new ArrayList<>();
+            objets = new Objets();
             // Stocke les objets
             while (sc.hasNextLine()) {
                 String[] s = sc.nextLine().split(" ; ");
@@ -43,8 +47,7 @@ public class SacADos {
             }
 
             sc.close();
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
             System.exit(1);
         }
@@ -54,11 +57,11 @@ public class SacADos {
         return poidsMax;
     }
 
-    public List<Objet> getObjets() {
-        return objets;
-    }
-
     public void setPoidsMax(double poidsMax) {
         this.poidsMax = poidsMax;
+    }
+
+    public Objets getObjets() {
+        return objets;
     }
 }

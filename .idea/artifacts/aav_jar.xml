@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="aav:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/resoudre-sac-a-dos</output-path>
+    <root id="archive" name="resoudre-sac-a-dos.jar">
+      <element id="module-output" name="aav" />
+    </root>
+  </artifact>
+</component>
