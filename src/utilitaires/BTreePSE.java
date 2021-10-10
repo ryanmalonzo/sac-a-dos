@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BTreePSE {
     private static SacADos sac;
-    private static double inf = 0.0;
+    private static double inf;
     private BTreePSE gauche;
     private BTreePSE droite;
     private BTreePSE parent;
@@ -23,6 +23,7 @@ public class BTreePSE {
         objets = new ArrayList<>(); // racine vide
         initialiserFils();
         BTreePSE.sac = sac;
+        BTreePSE.inf = 0.0;
     }
 
     private BTreePSE() {
