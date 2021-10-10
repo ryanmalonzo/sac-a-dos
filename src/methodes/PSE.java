@@ -1,8 +1,8 @@
 package methodes;
 
 import objets.Objets;
-import utilitaires.BTreePSE;
 import sacados.SacADos;
+import utilitaires.BTreePSE;
 
 public class PSE extends Methode {
     public void resoudre(SacADos sac) {

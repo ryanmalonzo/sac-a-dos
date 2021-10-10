@@ -9,14 +9,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class BTreePSE {
+    private static SacADos sac;
+    private static double inf = 0.0;
     private BTreePSE gauche;
     private BTreePSE droite;
     private BTreePSE parent;
-
     private List<Integer> objets;
-
-    private static SacADos sac;
-    private static double inf = 0.0;
 
 
     public BTreePSE(SacADos sac) {

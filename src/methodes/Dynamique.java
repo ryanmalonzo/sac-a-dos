@@ -74,6 +74,7 @@ public class Dynamique extends Methode {
     /**
      * Détermine un coefficient multiplicateur à appliquer aux valeurs de poids
      * pour pouvoir utiliser l'algorithme avec des valeurs décimales
+     *
      * @param sac Le sac à dos à résoudre
      * @return La valeur du coefficient (puissance de 10)
      */
@@ -100,7 +101,8 @@ public class Dynamique extends Methode {
     /**
      * Transforme tous les poids d'un sac à dos en valeurs entières en les multipliant
      * par un coefficient
-     * @param sac Le sac à dos à normaliser
+     *
+     * @param sac         Le sac à dos à normaliser
      * @param coefficient Le coefficient à appliquer
      */
     private void normaliser(SacADos sac, int coefficient) {
