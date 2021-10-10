@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Wrapper pour une liste d'<Objet> qui permet
+ * Wrapper pour une liste d'Objet qui permet
  * de ne pas calculer le poids et la valeur cumulés des objets
  * s'il n'y a pas besoin de le faire
  */
