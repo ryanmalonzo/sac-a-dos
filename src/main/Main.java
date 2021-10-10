@@ -33,7 +33,7 @@ public class Main {
         sac.resoudre(m);
         long end = System.currentTimeMillis();
 
-        double time = end - start;
-        System.out.println("Temps d'exécution : " + time + " ms");
+        double time = (double) (end - start) / 1000;
+        System.out.println("Temps d'exécution : " + time + " s");
     }
 }
