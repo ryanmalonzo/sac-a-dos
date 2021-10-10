@@ -36,8 +36,7 @@ public class SacADos {
             }
 
             sc.close();
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
             System.exit(1);
         }
@@ -47,11 +46,11 @@ public class SacADos {
         return poidsMax;
     }
 
-    public Objets getObjets() {
-        return objets;
-    }
-
     public void setPoidsMax(double poidsMax) {
         this.poidsMax = poidsMax;
+    }
+
+    public Objets getObjets() {
+        return objets;
     }
 }

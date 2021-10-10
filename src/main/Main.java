@@ -1,6 +1,8 @@
 package main;
 
-import methodes.*;
+import methodes.Dynamique;
+import methodes.Gloutonne;
+import methodes.PSE;
 import sacados.IMethode;
 import sacados.SacADos;
 
@@ -14,20 +16,24 @@ public class Main {
 
         IMethode m;
         switch (args[2]) {
-            case "gloutonne": m = new Gloutonne();
+            case "gloutonne":
+                m = new Gloutonne();
                 break;
-            case "dynamique": m = new Dynamique();
+            case "dynamique":
+                m = new Dynamique();
                 break;
-            case "pse": m = new PSE();
+            case "pse":
+                m = new PSE();
                 break;
-            default: throw new IllegalArgumentException("Nom de méthode inconnue : " + args[2]);
+            default:
+                throw new IllegalArgumentException("Nom de méthode inconnue : " + args[2]);
         }
 
-        long debutRes = System.currentTimeMillis();
+        long start = System.currentTimeMillis();
         sac.resoudre(m);
-        long finRes = System.currentTimeMillis();
+        long end = System.currentTimeMillis();
 
-        double tempsRes = finRes - debutRes;
-        System.out.println("Temps d'exécution : " + tempsRes + " ms");
+        double time = end - start;
+        System.out.println("Temps d'exécution : " + time + " ms");
     }
 }

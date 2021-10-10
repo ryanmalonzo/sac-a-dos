@@ -13,6 +13,7 @@ import java.text.DecimalFormat;
 public abstract class Methode implements IMethode {
     /**
      * Trie une liste d'objets avec l'algorithme de tri rapide
+     *
      * @param l La liste d'objets
      */
     protected static void quicksort(Objets l) {
@@ -21,9 +22,10 @@ public abstract class Methode implements IMethode {
 
     /**
      * Affiche le résultat d'une méthode de résolution du sac à dos
+     *
      * @param contenu Les objets composant le sac à dos à l'issue de la méthode
-     * @param valeur La valeur totale du sac à dos
-     * @param poids Le poids total du sac à dos
+     * @param valeur  La valeur totale du sac à dos
+     * @param poids   Le poids total du sac à dos
      */
     protected static void afficher(Objets contenu, double poids, double valeur) {
         // Formatage à deux chiffres après la virgule
