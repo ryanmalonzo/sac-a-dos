@@ -23,7 +23,7 @@ Le problème du sac à dos est l’un des 21 problèmes NP-complets de Richard K
 de 1972. La formulation du problème est fort simple, mais sa résolution est plus complexe. Les algorithmes
 existants peuvent résoudre des instances pratiques de taille importante. Cependant, la structure singulière du
 problème, et le fait qu’il soit présent en tant que sous-problème d’autres problèmes plus généraux, en font un
-sujet de choix pour la recherche
+sujet de choix pour la recherche.
 
 ### Présentation du problème
 
