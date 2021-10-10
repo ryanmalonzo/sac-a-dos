@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Implémentation d'un arbre binaire de recherche
+ * adapté pour la méthode PSE de résolution de sac à dos
+ */
 public class BTreePSE {
     private static SacADos sac;
     private static double inf;
@@ -16,7 +20,11 @@ public class BTreePSE {
     private BTreePSE parent;
     private List<Integer> objets;
 
-
+    /**
+     * Construit la racine de l'arbre
+     *
+     * @param sac Le sac à dos à résoudre
+     */
     public BTreePSE(SacADos sac) {
         this();
         parent = this;
@@ -55,11 +63,13 @@ public class BTreePSE {
     private void ajouter(Integer i, boolean droite) {
         if (objets == null) {
             objets = new ArrayList<>(parent.objets);
+            // Le fils droit reçoit le prochain objet du sac
             if (droite) {
                 objets.add(i);
                 if (!realisable(intToObj(objets)))
                     parent.droite = null;
             }
+            // Vérification de la borne supérieure
             if (sup() < inf) {
                 if (droite)
                     parent.droite = null;
@@ -76,12 +86,26 @@ public class BTreePSE {
         }
     }
 
+    /**
+     * Récupère les listes d'objets contenues
+     * dans les noeuds terminaux de l'arbre
+     *
+     * @return La liste des index + 1 des objets
+     * des noeuds terminaux de l'arbre
+     */
     public List<List<Integer>> feuilles() {
         List<List<Integer>> f = new ArrayList<>();
         dfs(f);
         return f;
     }
 
+    /**
+     * Effectue un parcours en profondeur de l'arbre et
+     * peuple la liste en paramètre de ses noeuds terminaux
+     *
+     * @param feuilles La liste à remplir des noeuds terminaux
+     *                 de l'arbre
+     */
     private void dfs(List<List<Integer>> feuilles) {
         if (existe(gauche) || existe(droite)) {
             if (existe(gauche))
@@ -150,6 +174,11 @@ public class BTreePSE {
         return 1 + parent.profondeur();
     }
 
+    /**
+     * Calcule la borne supérieure de l'arbre courant
+     *
+     * @return La valeur de la borne supérieure
+     */
     private double sup() {
         int objetSuivant = profondeur();
         double sup = 0.0;

@@ -6,6 +6,8 @@ import sacados.SacADos;
 
 public class Dynamique extends Methode {
     public void resoudre(SacADos sac) {
+        // Normalise les valeurs de poids des objets et du sac pour n'opérer
+        // qu'avec des valeurs entières (accès aux cases du tableau)
         int coefficient = coefficient(sac);
         normaliser(sac, coefficient);
 

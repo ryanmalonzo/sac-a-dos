@@ -3,6 +3,11 @@ package objets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Wrapper pour une liste d'<Objet> qui permet
+ * de ne pas calculer le poids et la valeur cumulés des objets
+ * s'il n'y a pas besoin de le faire
+ */
 public class Objets {
     private final List<Objet> objets;
     private double poids;
@@ -19,6 +24,12 @@ public class Objets {
         valeurUpdated = false;
     }
 
+    /**
+     * Ajoute un objet à la liste et marque le calcul du poids
+     * et de la valeur de la liste pour actualisation
+     *
+     * @param objet L'objet à ajouter
+     */
     public void add(Objet objet) {
         objets.add(objet);
         poidsUpdated = valeurUpdated = false;
@@ -36,6 +47,11 @@ public class Objets {
         return objets.size();
     }
 
+    /**
+     * Calcule le poids des objets si besoin et le renvoie
+     *
+     * @return Le poids de l'ensemble des objets de la liste
+     */
     public double poids() {
         if (poidsUpdated) return poids;
         poids = 0.0;
@@ -44,6 +60,11 @@ public class Objets {
         return poids;
     }
 
+    /**
+     * Calcule la valeur des objets si besoin et la renvoie
+     *
+     * @return La valeur de l'ensemble des objets de la liste
+     */
     public double valeur() {
         if (valeurUpdated) return valeur;
         valeur = 0.0;

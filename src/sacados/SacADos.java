@@ -12,11 +12,22 @@ public class SacADos {
     private Double poidsMax;
     private Objets objets;
 
+    /**
+     * Initialise un sac à dos
+     *
+     * @param chemin   Le chemin du fichier contenant ses objets formatés
+     * @param poidsMax Le poids maximal supporté par le sac
+     */
     public SacADos(String chemin, double poidsMax) {
         this.chemin = chemin;
         this.poidsMax = poidsMax;
     }
 
+    /**
+     * Résout le sac à dos selon la méthode passée en paramètre
+     *
+     * @param methode La méthode à utiliser pour la résolution
+     */
     public void resoudre(IMethode methode) {
         if (objets == null)
             parse(chemin);

@@ -5,6 +5,9 @@ import objets.Objets;
 
 import java.util.Collections;
 
+/**
+ * Implémentation du tri rapide pour des objets par comparaison de ratio valeur/poids
+ */
 public class Quicksort {
     private static void swap(Objets l, int a, int b) {
         Collections.swap(l.get(), a, b);

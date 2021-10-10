@@ -7,7 +7,7 @@ import sacados.SacADos;
 public class Gloutonne extends Methode {
     public void resoudre(SacADos sac) {
         Objets objets = sac.getObjets();
-        quicksort(objets);
+        quicksort(objets); // Tri rapide par comparaison de ratio valeur/poids
 
         Objets contenu = new Objets();
         double valeur = 0.0, poids = 0.0;

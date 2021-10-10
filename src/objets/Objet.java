@@ -5,6 +5,13 @@ public class Objet implements Comparable<Objet> {
     private final double valeur;
     private double poids;
 
+    /**
+     * Initialise un objet
+     *
+     * @param nom Le nom de l'objet
+     * @param poids Le poids de l'objet
+     * @param valeur La valeur de l'objet
+     */
     public Objet(String nom, double poids, double valeur) {
         this.nom = nom;
         this.poids = poids;

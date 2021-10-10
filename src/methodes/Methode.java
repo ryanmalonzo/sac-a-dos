@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 
 /**
  * Classe abstraite de méthode contenant les fonctions communes à chaque implémentation
- * pour le tri et l'affichage du résultat d'une résolution
+ * pour le tri d'objets et l'affichage du résultat d'une résolution
  */
 public abstract class Methode implements IMethode {
     /**
