@@ -156,8 +156,8 @@ public class BTreePSE {
             double valeur = objets.valeur();
             /*
             Deux cas de figure :
-            - la valeur du sac est plus grande que la solution
-            - la valeur du sac est la même que la solution mais son poids est plus faible (optimal)
+            - la valeur des objets est plus grande que la solution courante
+            - la valeur des objets est la même que la solution courante mais son poids est plus faible (optimal)
             */
             if (valeur > valeurSolution || (valeur == valeurSolution && poids < poidsSolution)) {
                 poidsSolution = poids;
