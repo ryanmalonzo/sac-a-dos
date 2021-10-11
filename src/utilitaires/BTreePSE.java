@@ -183,7 +183,7 @@ public class BTreePSE {
         int objetSuivant = profondeur();
         double sup = 0.0;
         Objets ob = intToObj(objets);
-        for (Objet o : ob.get()) {
+        for (Objet o : ob) {
             sup += o.getValeur();
         }
 

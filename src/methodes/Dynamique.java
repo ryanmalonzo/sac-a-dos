@@ -57,7 +57,7 @@ public class Dynamique extends Methode {
         }
 
         // Réinitialisation des poids pour affichage
-        for (Objet o : contenu.get())
+        for (Objet o : contenu)
             o.setPoids(o.getPoids() / coefficient);
         poids = poids / coefficient;
 
@@ -85,7 +85,7 @@ public class Dynamique extends Methode {
         // des objets et le poids maximum du sac
         int nbDecimalesMax = 0;
 
-        for (Objet o : sac.getObjets().get()) {
+        for (Objet o : sac.getObjets()) {
             // On récupère dans une chaîne les décimales du nombre
             String s = Double.toString(o.getPoids()).split("\\.")[1];
             if (s.length() > nbDecimalesMax)
@@ -108,7 +108,7 @@ public class Dynamique extends Methode {
      * @param coefficient Le coefficient à appliquer
      */
     private void normaliser(SacADos sac, int coefficient) {
-        for (Objet o : sac.getObjets().get())
+        for (Objet o : sac.getObjets())
             o.setPoids(o.getPoids() * coefficient);
 
         sac.setPoidsMax(sac.getPoidsMax() * coefficient);

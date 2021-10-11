@@ -1,6 +1,7 @@
 package objets;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * de ne pas calculer le poids et la valeur cumulés des objets
  * s'il n'y a pas besoin de le faire
  */
-public class Objets {
+public class Objets implements Iterable<Objet> {
     private final List<Objet> objets;
     private double poids;
     private double valeur;
@@ -71,5 +72,10 @@ public class Objets {
         for (Objet o : objets) valeur += o.getValeur();
         valeurUpdated = true;
         return valeur;
+    }
+
+    @Override
+    public Iterator<Objet> iterator() {
+        return objets.iterator();
     }
 }

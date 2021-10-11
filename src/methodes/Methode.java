@@ -34,7 +34,7 @@ public abstract class Methode implements IMethode {
         df.setMaximumFractionDigits(2);
 
         System.out.println("Contenu du sac :");
-        for (Objet objet : contenu.get())
+        for (Objet objet : contenu)
             System.out.printf("%s, poids %5s, valeur %5s\n", objet.getNom(),
                     df.format(objet.getPoids()), df.format(objet.getValeur()));
 

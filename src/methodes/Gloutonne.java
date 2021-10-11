@@ -11,7 +11,7 @@ public class Gloutonne extends Methode {
 
         Objets contenu = new Objets();
         double valeur = 0.0, poids = 0.0;
-        for (Objet objet : objets.get()) {
+        for (Objet objet : objets) {
             if (poids + objet.getPoids() <= sac.getPoidsMax()) {
                 contenu.add(objet);
                 valeur += objet.getValeur();
