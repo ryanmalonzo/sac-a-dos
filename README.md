@@ -9,9 +9,8 @@ de trois algorithmes, ou méthodes :
 * La méthode dynamique donnée par [ce cours](http://user.oc-static.com/pdf/95368-introduction-a-la-programmation-dynamique.pdf)
 * [La méthode par procédure de séparation et d'évaluation (PSE)](https://fr.wikipedia.org/wiki/S%C3%A9paration_et_%C3%A9valuation)
 
-Ce programme a été réalisé intégralement en Java dans le cadre d'un projet d'Algorithmique 
-Avancée (AAV) en deuxième année de DUT Informatique à l'IUT de Paris, pour l'année 
-universitaire 2021 - 2022.
+Ce programme a été réalisé intégralement en Java dans le cadre du projet d'Algorithmique Avancée (AAV) dispensé en
+deuxième année de DUT Informatique à l'IUT de Paris, pour l'année universitaire 2021 - 2022.
 
 ## Synopsis
 
