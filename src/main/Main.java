@@ -8,6 +8,9 @@ import sacados.SacADos;
 
 public class Main {
     public static void main(String[] args) {
+        if (args.length < 3)
+            throw new IllegalArgumentException("Nombre insuffisant de paramètres.");
+
         double poidsMax = Double.parseDouble(args[1]);
         if (poidsMax <= 0.0)
             throw new IllegalArgumentException("Poids max inférieur ou égal à 0.0");
@@ -32,6 +35,8 @@ public class Main {
         long start = System.currentTimeMillis();
         sac.resoudre(m);
         long end = System.currentTimeMillis();
+
+        sac.afficher(m);
 
         double time = (double) (end - start) / 1000;
         System.out.println("Temps d'exécution : " + time + " s");

@@ -137,9 +137,8 @@ public class BTreePSE {
 
     private Objets intToObj(List<Integer> entiers) {
         Objets o = new Objets();
-        Objets s = sac.getObjets();
         for (Integer i : entiers)
-            o.add(s.get(i - 1)); // -1 car +1 pour l'affichage
+            o.add(sac.getObjets().get(i - 1)); // -1 car +1 pour l'affichage
         return o;
     }
 

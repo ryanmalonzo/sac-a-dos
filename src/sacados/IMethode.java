@@ -7,4 +7,9 @@ public interface IMethode {
      * @param sac Le sac à dos à résoudre
      */
     void resoudre(SacADos sac);
+
+    /**
+     * Affiche le résultat de la résolution d'un sac à dos
+     */
+    void afficher();
 }

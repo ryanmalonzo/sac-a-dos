@@ -53,6 +53,15 @@ public class SacADos {
         }
     }
 
+    /**
+     * Affiche le résultat de la résolution du sac
+     *
+     * @param m La méthode employée
+     */
+    public void afficher(IMethode m) {
+        m.afficher();
+    }
+
     public double getPoidsMax() {
         return poidsMax;
     }

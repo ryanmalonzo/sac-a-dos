@@ -5,6 +5,10 @@ import objets.Objets;
 import sacados.SacADos;
 
 public class Dynamique extends Methode {
+    private Objets contenu;
+    private double poids;
+    private double valeur;
+
     public void resoudre(SacADos sac) {
         // Normalise les valeurs de poids des objets et du sac pour n'opérer
         // qu'avec des valeurs entières (accès aux cases du tableau)
@@ -41,10 +45,10 @@ public class Dynamique extends Methode {
         while (m[nbObjets - 1][j] == m[nbObjets - 1][j - 1])
             --j;
 
-        double poids = j; // pour affichage
+        poids = j; // pour affichage
 
         // Récupérer les objets à mettre dans le sac
-        Objets contenu = new Objets();
+        contenu = new Objets();
         int i = nbObjets - 1;
         while (j > 0) {
             while (i > 0 && m[i][j] == m[i - 1][j])
@@ -61,16 +65,7 @@ public class Dynamique extends Methode {
             o.setPoids(o.getPoids() / coefficient);
         poids = poids / coefficient;
 
-        // Affichage des obtenus contenus dans le sac pour solution optimale
-        afficher(contenu, poids, m[nbObjets - 1][maxPoids]);
-
-        // Affichage de la matrice
-        /*for (int k = 0; k < nbObjets; ++k) {
-            for (int l = 0; l < maxPoids + 1; ++l)
-                System.out.printf("%4s ", m[k][l]);
-            System.out.println();
-        }
-        System.out.println();*/
+        valeur = m[nbObjets - 1][maxPoids];
     }
 
     /**
@@ -112,5 +107,17 @@ public class Dynamique extends Methode {
             o.setPoids(o.getPoids() * coefficient);
 
         sac.setPoidsMax(sac.getPoidsMax() * coefficient);
+    }
+
+    public void afficher() {
+        afficher(contenu, poids, valeur);
+
+        // Affichage de la matrice
+        /*for (int k = 0; k < nbObjets; ++k) {
+            for (int l = 0; l < maxPoids + 1; ++l)
+                System.out.printf("%4s ", m[k][l]);
+            System.out.println();
+        }
+        System.out.println();*/
     }
 }
