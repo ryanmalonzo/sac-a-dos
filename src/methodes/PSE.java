@@ -2,7 +2,7 @@ package methodes;
 
 import objets.Objets;
 import sacados.SacADos;
-import utilitaires.BTreePSE;
+import utilitaires.BSTree;
 
 public class PSE extends Methode {
     private Objets contenu;
@@ -10,12 +10,11 @@ public class PSE extends Methode {
     private double valeur;
 
     public void resoudre(SacADos sac) {
-        BTreePSE bt = new BTreePSE(sac);
-        bt.construire();
+        BSTree bt = new BSTree(sac);
 
         contenu = bt.solution();
-        poids = contenu.poids();
-        valeur = contenu.valeur();
+        poids = contenu.getPoids();
+        valeur = contenu.getValeur();
     }
 
     public void afficher() {

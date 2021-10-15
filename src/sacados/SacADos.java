@@ -5,9 +5,11 @@ import objets.Objets;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
-public class SacADos {
+public class SacADos implements Iterable<Objet> {
     private final String chemin;
     private Double poidsMax;
     private Objets objets;
@@ -53,6 +55,14 @@ public class SacADos {
         }
     }
 
+    public List<Objet> sub(int fromIndex, int toIndex) {
+        return objets.get().subList(fromIndex, toIndex);
+    }
+
+    public int size() {
+        return objets.size();
+    }
+
     /**
      * Affiche le résultat de la résolution du sac
      *
@@ -72,5 +82,10 @@ public class SacADos {
 
     public Objets getObjets() {
         return objets;
+    }
+
+    @Override
+    public Iterator<Objet> iterator() {
+        return objets.iterator();
     }
 }

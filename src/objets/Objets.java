@@ -5,24 +5,22 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Wrapper pour une liste d'Objet qui permet
- * de ne pas calculer le poids et la valeur cumulés des objets
- * s'il n'y a pas besoin de le faire
+ * Wrapper pour une liste d'Objet
  */
 public class Objets implements Iterable<Objet> {
     private final List<Objet> objets;
     private double poids;
     private double valeur;
 
-    private boolean poidsUpdated;
-    private boolean valeurUpdated;
-
     public Objets() {
         objets = new ArrayList<>();
-        poids = 0.0;
-        valeur = 0.0;
-        poidsUpdated = false;
-        valeurUpdated = false;
+        poids = valeur = 0.0;
+    }
+
+    public Objets(Objets objets) {
+        this.objets = new ArrayList<>(objets.objets);
+        poids = objets.poids;
+        valeur = objets.valeur;
     }
 
     /**
@@ -33,7 +31,8 @@ public class Objets implements Iterable<Objet> {
      */
     public void add(Objet objet) {
         objets.add(objet);
-        poidsUpdated = valeurUpdated = false;
+        poids += objet.getPoids();
+        valeur += objet.getValeur();
     }
 
     public List<Objet> get() {
@@ -48,29 +47,11 @@ public class Objets implements Iterable<Objet> {
         return objets.size();
     }
 
-    /**
-     * Calcule le poids des objets si besoin et le renvoie
-     *
-     * @return Le poids de l'ensemble des objets de la liste
-     */
-    public double poids() {
-        if (poidsUpdated) return poids;
-        poids = 0.0;
-        for (Objet o : objets) poids += o.getPoids();
-        poidsUpdated = true;
+    public double getPoids() {
         return poids;
     }
 
-    /**
-     * Calcule la valeur des objets si besoin et la renvoie
-     *
-     * @return La valeur de l'ensemble des objets de la liste
-     */
-    public double valeur() {
-        if (valeurUpdated) return valeur;
-        valeur = 0.0;
-        for (Objet o : objets) valeur += o.getValeur();
-        valeurUpdated = true;
+    public double getValeur() {
         return valeur;
     }
 
