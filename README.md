@@ -1,4 +1,4 @@
-![sac-a-dos](https://raw.githubusercontent.com/yusa-ai/aav/main/docs/logo.svg?token=APPMWKUNWWMDBOTVXZ4NOJLBNPPV4)
+![sac-a-dos](./docs/logo.svg)
 
 # Problème du sac à dos
 
