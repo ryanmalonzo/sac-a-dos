@@ -15,6 +15,11 @@ public class BSTree {
     private BSTree droite;
     private Objets objets;
 
+    /**
+     * Construit la racine de l'arbre
+     *
+     * @param sac Le sac à dos à résoudre
+     */
     public BSTree(SacADos sac) {
         parent = this;
         objets = new Objets();
@@ -36,6 +41,10 @@ public class BSTree {
         gauche.parent = droite.parent = this;
     }
 
+    /**
+     * Construit l'arbre binaire d'énumération des combinaisons possibles
+     * d'objets du sac
+     */
     private void construire() {
         for (Objet objet : sac) {
             if (gauche != null)
@@ -45,17 +54,23 @@ public class BSTree {
         }
     }
 
-    private void ajouter(Objet item, boolean isRight) {
+    /**
+     * Ajoute un objet dans un arbre
+     *
+     * @param objet   L'objet à ajouter
+     * @param isRight Si l'arbre est le noeud droit de son parent
+     */
+    private void ajouter(Objet objet, boolean isRight) {
         if (objets == null) {
             objets = new Objets(parent.objets);
             if (isRight) {
-                objets.add(item);
+                objets.add(objet);
                 if (!realisable(objets)) {
                     parent.droite = null;
                     return;
                 }
             }
-            // Comparaison avec la borne supérieure
+            // Comparaison avec la borne inférieure
             if (sup() < inf) {
                 if (isRight)
                     parent.droite = null;
@@ -66,12 +81,44 @@ public class BSTree {
             initialiserFils();
         } else {
             if (droite != null)
-                droite.ajouter(item, true);
+                droite.ajouter(objet, true);
             if (gauche != null)
-                gauche.ajouter(item, false);
+                gauche.ajouter(objet, false);
         }
     }
 
+    private int profondeur() {
+        if (parent == this)
+            return 1;
+        return 1 + parent.profondeur();
+    }
+
+    /**
+     * Détermine si les objets du noeud rentrent dans le sac
+     * et met à jour la borne inférieure de l'arbre en cas
+     * de meilleure solution
+     *
+     * @param objets Les objets à tester
+     * @return Vrai ou faux selon que les objets rentrent
+     * dans le sac ou non
+     */
+    private boolean realisable(Objets objets) {
+        if (objets.getPoids() > sac.getPoidsMax())
+            return false;
+
+        double valeur = objets.getValeur();
+        // Mise à jour de la borne inférieure
+        if (valeur > inf) inf = valeur;
+
+        return true;
+    }
+
+    /**
+     * Calcule la somme des valeurs des objets du sac
+     * et de celles des objets potentiellement restants
+     *
+     * @return La somme (borne supérieure)
+     */
     private double sup() {
         // Objets du sac
         double sup = objets.getValeur();
@@ -85,38 +132,24 @@ public class BSTree {
         return sup;
     }
 
-    private int profondeur() {
-        if (parent == this)
-            return 1;
-        return 1 + parent.profondeur();
-    }
-
-    private boolean realisable(Objets objets) {
-        if (objets.getPoids() > sac.getPoidsMax())
-            return false;
-
-        double valeur = objets.getValeur();
-
-        // Mise à jour de la borne inférieure
-        if (valeur > inf) inf = valeur;
-
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Objets o : feuilles())
-            sb.append(o.get()).append(System.lineSeparator());
-        return sb.toString();
-    }
-
+    /**
+     * Obtient la liste des noeuds terminaux de l'arbre
+     *
+     * @return La liste
+     */
     private List<Objets> feuilles() {
         List<Objets> feuilles = new ArrayList<>();
         parcours(feuilles);
         return feuilles;
     }
 
+    /**
+     * Calcule l'arbre en profondeur à la recherche des
+     * noeuds terminaux de l'arbre
+     *
+     * @param feuilles La liste à peupler des objets
+     *                 des noeuds terminaux
+     */
     private void parcours(List<Objets> feuilles) {
         boolean e = false;
         if (existe(gauche)) {
@@ -134,6 +167,12 @@ public class BSTree {
         return b != null && b.objets != null;
     }
 
+    /**
+     * Détermine la solution optimale de résolution
+     * du sac à dos
+     *
+     * @return La solution optimale
+     */
     public Objets solution() {
         List<Objets> feuilles = feuilles();
 
@@ -155,5 +194,13 @@ public class BSTree {
             }
         }
         return solution;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Objets o : feuilles())
+            sb.append(o.get()).append(System.lineSeparator());
+        return sb.toString();
     }
 }

@@ -35,6 +35,7 @@ public class Objets implements Iterable<Objet> {
         valeur += objet.getValeur();
     }
 
+
     public List<Objet> get() {
         return objets;
     }
