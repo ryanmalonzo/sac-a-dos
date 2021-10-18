@@ -37,7 +37,7 @@ public class SacADos implements Iterable<Objet> {
         methode.resoudre(this);
     }
 
-    private void parse(String chemin) {
+    public void parse(String chemin) {
         try {
             Scanner sc = new Scanner(new File(chemin));
 
@@ -82,6 +82,10 @@ public class SacADos implements Iterable<Objet> {
 
     public Objets getObjets() {
         return objets;
+    }
+
+    public String getChemin() {
+        return chemin;
     }
 
     @Override

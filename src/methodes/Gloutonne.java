@@ -14,15 +14,22 @@ public class Gloutonne extends Methode {
         quicksort(objets); // Tri rapide par comparaison de ratio valeur/poids
 
         contenu = new Objets();
-        valeur = 0.0;
-        poids = 0.0;
+        valeur = poids = 0.0;
+
+        double poidsMax = sac.getPoidsMax();
         for (Objet objet : objets) {
-            if (poids + objet.getPoids() <= sac.getPoidsMax()) {
+            if (poids + objet.getPoids() <= poidsMax) {
                 contenu.add(objet);
                 valeur += objet.getValeur();
                 poids += objet.getPoids();
             }
         }
+
+        sac.parse(sac.getChemin()); // réinitialisation
+    }
+
+    public double getValeur() {
+        return valeur;
     }
 
     public void afficher() {
