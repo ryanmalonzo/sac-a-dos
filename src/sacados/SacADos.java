@@ -3,11 +3,11 @@ package sacados;
 import objets.Objet;
 import objets.Objets;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 public class SacADos implements Iterable<Objet> {
     private String chemin;
@@ -50,17 +50,18 @@ public class SacADos implements Iterable<Objet> {
      */
     public void parse(String chemin) {
         try {
-            Scanner sc = new Scanner(new File(chemin));
+            BufferedReader bf = new BufferedReader(new FileReader(chemin));
 
             objets = new Objets();
             // Stocke les objets
-            while (sc.hasNextLine()) {
-                String[] s = sc.nextLine().split(" ; ");
+            String line;
+            while ((line = bf.readLine()) != null) {
+                String[] s = line.split(" ; ");
                 objets.add(new Objet(s[0], Double.parseDouble(s[1]), Double.parseDouble(s[2])));
             }
 
-            sc.close();
-        } catch (FileNotFoundException e) {
+            bf.close();
+        } catch (IOException e) {
             System.err.println(e.getMessage());
             System.exit(1);
         }
