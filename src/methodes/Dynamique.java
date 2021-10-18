@@ -66,6 +66,14 @@ public class Dynamique extends Methode {
         poids = poids / coefficient;
 
         valeur = m[nbObjets - 1][maxPoids];
+
+        // Affichage de la matrice
+        /*for (int k = 0; k < nbObjets; ++k) {
+            for (int l = 0; l < maxPoids + 1; ++l)
+                System.out.printf("%4s ", m[k][l]);
+            System.out.println();
+        }
+        System.out.println();*/
     }
 
     /**
@@ -83,13 +91,13 @@ public class Dynamique extends Methode {
         for (Objet o : sac.getObjets()) {
             // On récupère dans une chaîne les décimales du nombre
             String s = Double.toString(o.getPoids()).split("\\.")[1];
-            if (s.length() > nbDecimalesMax)
+            if (s.length() > nbDecimalesMax && !s.equals("0"))
                 nbDecimalesMax = s.length();
         }
 
         // Poids maximum du sac
         String s2 = Double.toString(sac.getPoidsMax()).split("\\.")[1];
-        if (s2.length() > nbDecimalesMax)
+        if (s2.length() > nbDecimalesMax && !s2.equals("0"))
             nbDecimalesMax = s2.length();
 
         return (int) Math.pow(10, nbDecimalesMax);
@@ -111,13 +119,5 @@ public class Dynamique extends Methode {
 
     public void afficher() {
         afficher(contenu, poids, valeur);
-
-        // Affichage de la matrice dans resoudre
-        /*for (int k = 0; k < nbObjets; ++k) {
-            for (int l = 0; l < maxPoids + 1; ++l)
-                System.out.printf("%4s ", m[k][l]);
-            System.out.println();
-        }
-        System.out.println();*/
     }
 }
