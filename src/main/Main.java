@@ -32,13 +32,14 @@ public class Main {
                 throw new IllegalArgumentException("Nom de méthode inconnue : " + args[2]);
         }
 
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         sac.resoudre(m);
-        long end = System.currentTimeMillis();
+        long end = System.nanoTime();
 
         sac.afficher(m);
 
-        double time = (double) (end - start) / 1000;
-        System.out.println("Temps d'exécution : " + time + " s");
+        double time = (double) (end - start);
+        System.out.println("Temps de résolution : " + String.format("%.3f", time / Math.pow(10, 9)) + " s (" +
+                String.format("%.0f", time / Math.pow(10, 6)) + " ms)");
     }
 }
