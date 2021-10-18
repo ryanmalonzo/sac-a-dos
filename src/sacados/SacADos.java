@@ -10,9 +10,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SacADos implements Iterable<Objet> {
-    private final String chemin;
+    private String chemin;
     private Double poidsMax;
     private Objets objets;
+
+
+    /**
+     * Initialise un sac à dos vide
+     */
+    public SacADos() {
+    }
 
     /**
      * Initialise un sac à dos
@@ -37,6 +44,12 @@ public class SacADos implements Iterable<Objet> {
         methode.resoudre(this);
     }
 
+    /**
+     * Parse les objets contenus dans un fichier texte
+     * et les stocke dans une liste d'objets
+     *
+     * @param chemin Le chemin du fichier contenant les objets du sac
+     */
     public void parse(String chemin) {
         try {
             Scanner sc = new Scanner(new File(chemin));
@@ -55,6 +68,13 @@ public class SacADos implements Iterable<Objet> {
         }
     }
 
+    /**
+     * Renvoie une sous-liste de la liste d'objets
+     *
+     * @param fromIndex L'index de début
+     * @param toIndex   L'index de fin (exclusif)
+     * @return La sous-liste d'objets
+     */
     public List<Objet> sub(int fromIndex, int toIndex) {
         return objets.get().subList(fromIndex, toIndex);
     }

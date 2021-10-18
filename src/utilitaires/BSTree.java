@@ -86,6 +86,7 @@ public class BSTree {
             this.isRight = isRight;
 
             if (isRight) {
+                // Ajout de la valeur et du poids de l'objet à ajouter
                 poids += objet.getPoids();
                 valeur += objet.getValeur();
                 if (!realisable()) {
@@ -94,7 +95,7 @@ public class BSTree {
                 }
             }
 
-            // Comparaison avec la borne inférieure
+            // Comparaison borne supérieure/inférieure
             if (superieure() < inferieure) {
                 if (isRight)
                     parent.droite = null;
@@ -114,7 +115,7 @@ public class BSTree {
     }
 
     /**
-     * Actualise la solution courante
+     * Vérifie si le noeud courant est une meilleure solution
      */
     private void actualiserSolution() {
         if (solution == null)
@@ -176,6 +177,13 @@ public class BSTree {
         return objets;
     }
 
+    /**
+     * Récupère les indexObjet contenus dans les
+     * parents d'un noeud jusqu'à la racine et les stocke
+     *
+     * @param i La liste d'entiers dans laquelle stocker
+     *          les indexs d'objets
+     */
     private void indexsParents(List<Integer> i) {
         if (parent != this) {
             if (isRight) i.add(indexObjet);
