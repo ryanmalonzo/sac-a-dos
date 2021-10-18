@@ -35,8 +35,7 @@ public abstract class Methode implements IMethode {
 
         System.out.println("Contenu du sac :");
         for (Objet objet : contenu)
-            System.out.printf("%s, poids %5s, valeur %5s\n", objet.getNom(),
-                    df.format(objet.getPoids()), df.format(objet.getValeur()));
+            System.out.println(objet);
 
         System.out.println();
         System.out.println("Poids total : " + df.format(poids) + ", valeur totale : " + df.format(valeur));

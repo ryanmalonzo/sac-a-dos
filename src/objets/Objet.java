@@ -46,4 +46,9 @@ public class Objet implements Comparable<Objet> {
         int r = difference >= 0.0 ? (int) Math.ceil(difference) : (int) Math.floor(difference);
         return r * -1; // tri décroissant méthode gloutonne
     }
+
+    @Override
+    public String toString() {
+        return nom + " : poids " + poids + ", valeur " + valeur;
+    }
 }

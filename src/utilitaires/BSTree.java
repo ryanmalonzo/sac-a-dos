@@ -47,10 +47,8 @@ public class BSTree {
      */
     private void construire() {
         for (Objet objet : sac) {
-            if (gauche != null)
-                gauche.ajouter(objet, false);
-            if (droite != null)
-                droite.ajouter(objet, true);
+            gauche.ajouter(objet, false);
+            droite.ajouter(objet, true);
         }
     }
 
@@ -80,10 +78,10 @@ public class BSTree {
             }
             initialiserFils();
         } else {
-            if (droite != null)
-                droite.ajouter(objet, true);
             if (gauche != null)
                 gauche.ajouter(objet, false);
+            if (droite != null)
+                droite.ajouter(objet, true);
         }
     }
 
@@ -108,8 +106,8 @@ public class BSTree {
 
         double valeur = objets.getValeur();
         // Mise à jour de la borne inférieure
-        if (valeur > inf) inf = valeur;
-
+        if (valeur >= inf)
+            inf = valeur;
         return true;
     }
 
@@ -144,7 +142,7 @@ public class BSTree {
     }
 
     /**
-     * Calcule l'arbre en profondeur à la recherche des
+     * Parcourt l'arbre en profondeur à la recherche des
      * noeuds terminaux de l'arbre
      *
      * @param feuilles La liste à peupler des objets
@@ -200,7 +198,7 @@ public class BSTree {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Objets o : feuilles())
-            sb.append(o.get()).append(System.lineSeparator());
+            sb.append(o.get().toString()).append(System.lineSeparator());
         return sb.toString();
     }
 }

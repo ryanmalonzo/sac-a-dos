@@ -60,4 +60,18 @@ public class Objets implements Iterable<Objet> {
     public Iterator<Objet> iterator() {
         return objets.iterator();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        Iterator<Objet> it = objets.iterator();
+        while (it.hasNext()) {
+            sb.append(it.next());
+            if (it.hasNext())
+                sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }

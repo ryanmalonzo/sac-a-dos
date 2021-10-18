@@ -112,7 +112,7 @@ public class Dynamique extends Methode {
     public void afficher() {
         afficher(contenu, poids, valeur);
 
-        // Affichage de la matrice
+        // Affichage de la matrice dans resoudre
         /*for (int k = 0; k < nbObjets; ++k) {
             for (int l = 0; l < maxPoids + 1; ++l)
                 System.out.printf("%4s ", m[k][l]);
