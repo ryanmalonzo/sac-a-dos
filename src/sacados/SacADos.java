@@ -30,6 +30,7 @@ public class SacADos implements Iterable<Objet> {
     public SacADos(String chemin, double poidsMax) {
         this.chemin = chemin;
         this.poidsMax = poidsMax;
+        parse(chemin);
     }
 
     /**
@@ -38,9 +39,6 @@ public class SacADos implements Iterable<Objet> {
      * @param methode La méthode à utiliser pour la résolution
      */
     public void resoudre(IMethode methode) {
-        if (objets == null)
-            parse(chemin);
-
         methode.resoudre(this);
     }
 
